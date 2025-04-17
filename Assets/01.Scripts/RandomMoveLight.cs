@@ -7,7 +7,6 @@ public class RandomMoveLight : MonoBehaviour
 {
     [SerializeField] private Light2D[] movingLights;
     [SerializeField] private Transform[] teamTargets; // 각 팀 위치를 Transform으로 등록
-    [SerializeField] private float randomMoveDuration = 30f;
 
     private bool isFocusing = false;
 
@@ -50,8 +49,4 @@ public class RandomMoveLight : MonoBehaviour
         light.transform.DOMove(targetPos, 0.8f).SetEase(Ease.OutBack);
     }
 
-    public void MoveLightAgain()
-    {
-        StartCoroutine(RandomMoveLights());
-    }
 }
