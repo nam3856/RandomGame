@@ -30,7 +30,7 @@
 <br/>
 
 ## 📁 사용 방법
-1. `PreviousTeams`에 이전 팀 입력
+1. `PreviousTeams.txt`에 이전 팀 입력
 2. Unity에서 실행
 3. 중복 방지 / 시드 선택
 4. 버튼 클릭 시 팀 배정 연출 시작
