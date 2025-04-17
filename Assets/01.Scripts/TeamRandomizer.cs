@@ -30,6 +30,9 @@ public class TeamRandomizer : MonoBehaviour
     [Header("플레이어 명단 (28명)")]
     [SerializeField] private List<string> players = new();          // 에디터에서 28명 입력
 
+    [Header("Exit Button")]
+    [SerializeField] private GameObject ExitButton;                // 종료 버튼
+
     private Dictionary<string, HashSet<string>> bannedPairs;
     private List<List<string>> teams = new();
     private List<string> teamsToShow = new();
@@ -130,6 +133,8 @@ public class TeamRandomizer : MonoBehaviour
                     {
                         teams.Add(members);
                         teamsToShow.AddRange(members);
+                        if(players.Count < 28)
+                            players.AddRange(members);
                     }
                     else
                         Debug.LogWarning($"라인 형식 오류 (멤버 수 !=4): {lines[i + 1]}");
@@ -277,6 +282,7 @@ public class TeamRandomizer : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         CompletedText.SetActive(true);
+        ExitButton.SetActive(true);
     }
 
     private IEnumerator PlayNameRoulette(int teamIndex, string finalName)
