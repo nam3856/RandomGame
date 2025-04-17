@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 79829105}
   - component: {fileID: 79829104}
   m_Layer: 5
-  m_Name: Team5Name (1)
+  m_Name: Team5Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1079,8 +1079,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b47c4fdd3af2cb34fa37a545a5fe24fe, type: 3}
-  m_Resource: {fileID: 8300000, guid: b47c4fdd3af2cb34fa37a545a5fe24fe, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 86084fb03cd350148bb0efe049b7dbc7, type: 3}
+  m_Resource: {fileID: 8300000, guid: 86084fb03cd350148bb0efe049b7dbc7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1242,11 +1242,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b57bc002f39664282db92d82bbed6c, type: 3}
---- !u!198 &212997941 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7714486075544143754, guid: ef0241ab8633130439cbb1f65d67c785, type: 3}
-  m_PrefabInstance: {fileID: 1755761258}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &309338071 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7047872386175241420, guid: aaeb99292b4781d4ba4ed8707f5314a7, type: 3}
@@ -1269,7 +1264,7 @@ GameObject:
   - component: {fileID: 336195317}
   - component: {fileID: 336195318}
   m_Layer: 5
-  m_Name: Team3Name
+  m_Name: Team3Names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1398,11 +1393,6 @@ MonoBehaviour:
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6308758188975051712, guid: 3ca2957386a6f7341828e0089b523103, type: 3}
   m_PrefabInstance: {fileID: 1164845439}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &374699040 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7714486075544143754, guid: ef0241ab8633130439cbb1f65d67c785, type: 3}
-  m_PrefabInstance: {fileID: 1375066734}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &385600445
 GameObject:
@@ -2023,7 +2013,7 @@ GameObject:
   - component: {fileID: 462170295}
   - component: {fileID: 462170296}
   m_Layer: 5
-  m_Name: Team7Name
+  m_Name: Team7Names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2209,11 +2199,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c44259c9723f948b1546840963d58f, type: 3}
---- !u!198 &503268892 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3305243064524424566, guid: 1feb8bdfa2ff3104b9773c131cffd8eb, type: 3}
-  m_PrefabInstance: {fileID: 567803706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &503606254 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4007371420604870411, guid: d0dcd7b1f13c7444cb0de8afbd80f5e5, type: 3}
@@ -2766,11 +2751,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598930017}
   m_CullTransparentMesh: 1
---- !u!198 &606533994 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8284152019373396988, guid: bcc02425dd625764f805f28f57c499bb, type: 3}
-  m_PrefabInstance: {fileID: 1946188909}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,11 +2932,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &693040089 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2351097953885549765, guid: 450c713c2d9aeac4597023418a76c523, type: 3}
-  m_PrefabInstance: {fileID: 1989592683}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &693510416
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,7 +2943,7 @@ GameObject:
   - component: {fileID: 693510417}
   - component: {fileID: 693510418}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: TeamPanels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3052,7 +3027,7 @@ GameObject:
   - component: {fileID: 771786263}
   - component: {fileID: 771786262}
   m_Layer: 5
-  m_Name: Team3Name (1)
+  m_Name: Team3Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3252,7 +3227,7 @@ GameObject:
   - component: {fileID: 785766837}
   - component: {fileID: 785766838}
   m_Layer: 5
-  m_Name: Team2Name
+  m_Name: Team2Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3269,8 +3244,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2133695436}
+  m_Children: []
   m_Father: {fileID: 1449275055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3389,7 +3363,7 @@ GameObject:
   - component: {fileID: 786366562}
   - component: {fileID: 786366563}
   m_Layer: 5
-  m_Name: Team5Name
+  m_Name: Team5Names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3514,11 +3488,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!198 &789824456 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6801231197068128380, guid: cb82ff4185a03f344adc6b0e5472b039, type: 3}
-  m_PrefabInstance: {fileID: 1720754561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &875982454 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2003158981416150756, guid: e8c44259c9723f948b1546840963d58f, type: 3}
@@ -3806,7 +3775,7 @@ GameObject:
   - component: {fileID: 991358082}
   - component: {fileID: 991358081}
   m_Layer: 5
-  m_Name: Team1Name (1)
+  m_Name: Team1Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4207,7 +4176,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 785766836}
+    m_TransformParent: {fileID: 2007576750}
     m_Modifications:
     - target: {fileID: 7955178065219229831, guid: 8ba49ec2673fe6041893f52fa9344163, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4215,7 +4184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7955178065219229831, guid: 8ba49ec2673fe6041893f52fa9344163, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 50.00001
       objectReference: {fileID: 0}
     - target: {fileID: 7955178065219229831, guid: 8ba49ec2673fe6041893f52fa9344163, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5621,7 +5590,7 @@ GameObject:
   - component: {fileID: 1519474425}
   - component: {fileID: 1519474424}
   m_Layer: 5
-  m_Name: Team6Name (1)
+  m_Name: Team6Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5745,11 +5714,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519474422}
   m_CullTransparentMesh: 1
---- !u!198 &1522310105 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5150925203061106999, guid: d8b57bc002f39664282db92d82bbed6c, type: 3}
-  m_PrefabInstance: {fileID: 190447145}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1533756121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6389,7 +6353,7 @@ GameObject:
   - component: {fileID: 1654414111}
   - component: {fileID: 1654414112}
   m_Layer: 5
-  m_Name: Team1Name
+  m_Name: Team1Names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6727,7 +6691,7 @@ GameObject:
   - component: {fileID: 1757627567}
   - component: {fileID: 1757627568}
   m_Layer: 5
-  m_Name: Team6Name
+  m_Name: Team6Names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7467,7 +7431,7 @@ GameObject:
   - component: {fileID: 1924407368}
   - component: {fileID: 1924407367}
   m_Layer: 5
-  m_Name: Team4Name (1)
+  m_Name: Team4Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8434,7 +8398,6 @@ MonoBehaviour:
   - {fileID: 394663025}
   - {fileID: 309338073}
   - {fileID: 1829352844}
-  randomMoveDuration: 30
 --- !u!114 &1965177716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9027,7 +8990,7 @@ GameObject:
   - component: {fileID: 2007576752}
   - component: {fileID: 2007576751}
   m_Layer: 5
-  m_Name: Team2Name (1)
+  m_Name: Team2Names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9044,7 +9007,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2133695436}
   m_Father: {fileID: 1449275055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -9163,7 +9127,7 @@ GameObject:
   - component: {fileID: 2074726860}
   - component: {fileID: 2074726861}
   m_Layer: 5
-  m_Name: Team4Name
+  m_Name: Team4Names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9344,16 +9308,17 @@ MonoBehaviour:
   - {fileID: 875982454}
   - {fileID: 351275883}
   - {fileID: 1214819408}
-  teamMemberEffectsComplete:
-  - {fileID: 693040089}
-  - {fileID: 212997941}
-  - {fileID: 1522310105}
-  - {fileID: 606533994}
-  - {fileID: 503268892}
-  - {fileID: 789824456}
-  - {fileID: 374699040}
   effect: {fileID: 385600446}
   button: {fileID: 1562068204}
+  randomMoveLight: {fileID: 1965177715}
+  TeamTitles:
+  - {fileID: 991358079}
+  - {fileID: 785766835}
+  - {fileID: 771786260}
+  - {fileID: 1924407365}
+  - {fileID: 79829102}
+  - {fileID: 1519474422}
+  - {fileID: 2130068420}
   players:
   - "\uCC28\uC218\uBBFC"
   - "\uAC15\uBCD1\uC900"
@@ -9383,7 +9348,6 @@ MonoBehaviour:
   - "\uB0A8\uACBD\uBBFC"
   - "\uBC15\uAC15"
   - "\uAE40\uD615\uC9C4"
-  randomMoveLight: {fileID: 1965177715}
 --- !u!114 &2106752073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9480,7 +9444,7 @@ GameObject:
   - component: {fileID: 2130068423}
   - component: {fileID: 2130068422}
   m_Layer: 5
-  m_Name: Team7Name (1)
+  m_Name: Team7Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
