@@ -15,9 +15,17 @@ public class TeamRandomizer : MonoBehaviour
     [SerializeField] private ParticleSystem[] teamEffects;          // 팀 완성 팡
     [SerializeField] private ParticleSystem[] teamMemberEffects;    // 멤버 등장 팡
     [SerializeField] private AudioSource effect;                    // 팡 사운드
-    [SerializeField] private Button button;                         // 셔플 버튼
     [SerializeField] private RandomMoveLight randomMoveLight;       // 라이트 포커스
     [SerializeField] private GameObject[] TeamTitles;          // 팀 이름들 (UI 오브젝트)
+
+    [SerializeField] private GameObject SettingCanvas;          // 설정 UI
+    [SerializeField] private Button shuffleButton;                         // 셔플 버튼
+    [SerializeField] private GameObject CompletedText;                 // 완료 텍스트
+
+    [Header("옵션")]
+    [SerializeField] private Toggle noDuplicateToggle;              // 이전 팀 중복 방지 옵션
+    [SerializeField] private Toggle fixedSeedToggle;                // 시드 고정 옵션
+    [SerializeField] private TMP_InputField seedInputField;         // 시드 입력 필드
 
     [Header("플레이어 명단 (28명)")]
     [SerializeField] private List<string> players = new();          // 에디터에서 28명 입력
@@ -26,30 +34,62 @@ public class TeamRandomizer : MonoBehaviour
     private List<List<string>> teams = new();
     private List<string> teamsToShow = new();
 
-    private System.Random rng = new System.Random();
+    private System.Random rng;
+    private void Awake()
+    {
+        // 토글 이벤트 등록
+        fixedSeedToggle.onValueChanged.AddListener(OnFixedSeedToggleChanged);
+        // 초깃값 반영
+        OnFixedSeedToggleChanged(fixedSeedToggle.isOn);
 
+        shuffleButton.onClick.AddListener(ShuffleTeams);
+    }
+
+    private void OnFixedSeedToggleChanged(bool isOn)
+    {
+        // 고정 시드 사용 설정에 따라 입력 필드 활성화
+        seedInputField.gameObject.SetActive(isOn);
+    }
     public void ShuffleTeams()
     {
-        button.interactable = false;
+        SettingCanvas.SetActive(false);
+
+        // RNG 초기화: 시드 고정 옵션 확인
+        if (fixedSeedToggle.isOn)
+        {
+            if (!int.TryParse(seedInputField.text, out int seed))
+            {
+                Debug.LogWarning("잘못된 시드값입니다. 기본 시드(0)로 고정합니다.");
+                seed = 0;
+            }
+            rng = new System.Random(seed);
+        }
+        else
+        {
+            rng = new System.Random();
+        }
 
         // 1) 파일에서 1회차 팀 불러오기
         var previousTeams = LoadPreviousTeamsFromFile();
         if (previousTeams == null || previousTeams.Count < 7)
         {
             Debug.LogError("PreviousTeams.txt를 읽어오지 못했거나, 7개 팀 정보가 아닙니다.");
-            button.interactable = true;
+            shuffleButton.interactable = true;
             return;
         }
 
         // 2) 이전 팀에서 함께 했던 쌍을 기록
-        bannedPairs = BuildBannedPairs(previousTeams);
+        if (noDuplicateToggle.isOn)
+            bannedPairs = BuildBannedPairs(previousTeams);
+        else
+            bannedPairs = new Dictionary<string, HashSet<string>>();
 
         // 3) 즉시 2회차 팀 생성
         teams = GenerateRound2Teams(players, bannedPairs, maxAttempts: 10000);
         if (teams == null)
         {
             Debug.LogWarning("유효한 2회차 팀 구성을 찾지 못했습니다.");
-            button.interactable = true;
+            shuffleButton.interactable = true;
             return;
         }
 
@@ -155,6 +195,7 @@ public class TeamRandomizer : MonoBehaviour
         return null;
     }
 
+
     private bool HasConflict(List<string> group, Dictionary<string, HashSet<string>> banned)
     {
         foreach (var a in group)
@@ -216,6 +257,7 @@ public class TeamRandomizer : MonoBehaviour
                     .SetEase(Ease.OutBack)
                     .OnComplete(() => teamTexts[ti].transform.DOScale(1f, 0.08f));
 
+                teamMemberEffects[ti].gameObject.transform.position = new Vector3(teamMemberEffects[ti].gameObject.transform.position.x, teamMemberEffects[ti].gameObject.transform.position.y-0.45f);
                 yield return new WaitForSeconds(0.3f);
             }
 
@@ -232,7 +274,9 @@ public class TeamRandomizer : MonoBehaviour
         }
 
         randomMoveLight.GoLight();
-        button.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+        CompletedText.SetActive(true);
     }
 
     private IEnumerator PlayNameRoulette(int teamIndex, string finalName)
