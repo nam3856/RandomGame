@@ -17,10 +17,12 @@ public class TeamRandomizer : MonoBehaviour
     [SerializeField] private AudioSource effect;                    // 팡 사운드
     [SerializeField] private RandomMoveLight randomMoveLight;       // 라이트 포커스
     [SerializeField] private GameObject[] TeamTitles;          // 팀 이름들 (UI 오브젝트)
+    [SerializeField] private MusicPlayer musicPlayer;                // 음악 플레이어
 
     [SerializeField] private GameObject SettingCanvas;          // 설정 UI
     [SerializeField] private Button shuffleButton;                         // 셔플 버튼
     [SerializeField] private GameObject CompletedText;                 // 완료 텍스트
+    [SerializeField] private Subscription subscription;                // 왠진 모르겠지만 자막 출력 스크립트
 
     [Header("옵션")]
     [SerializeField] private Toggle noDuplicateToggle;              // 이전 팀 중복 방지 옵션
@@ -32,6 +34,9 @@ public class TeamRandomizer : MonoBehaviour
 
     [Header("Exit Button")]
     [SerializeField] private GameObject ExitButton;                // 종료 버튼
+
+    [Header("For Debugging")]
+    [SerializeField] private TextMeshProUGUI ErrorText;            // 에러 메시지 출력용
 
     private Dictionary<string, HashSet<string>> bannedPairs;
     private List<List<string>> teams = new();
@@ -55,6 +60,7 @@ public class TeamRandomizer : MonoBehaviour
     }
     public void ShuffleTeams()
     {
+        shuffleButton.interactable = false;
         SettingCanvas.SetActive(false);
 
         // RNG 초기화: 시드 고정 옵션 확인
@@ -63,6 +69,7 @@ public class TeamRandomizer : MonoBehaviour
             if (!int.TryParse(seedInputField.text, out int seed))
             {
                 Debug.LogWarning("잘못된 시드값입니다. 기본 시드(0)로 고정합니다.");
+                ErrorText.text = "PreviousTeams.txt를 읽어오지 못했거나, 7개 팀 정보가 아닙니다.";
                 seed = 0;
             }
             rng = new System.Random(seed);
@@ -77,6 +84,8 @@ public class TeamRandomizer : MonoBehaviour
         if (previousTeams == null || previousTeams.Count < 7)
         {
             Debug.LogError("PreviousTeams.txt를 읽어오지 못했거나, 7개 팀 정보가 아닙니다.");
+            ErrorText.text = "PreviousTeams.txt를 읽어오지 못했거나, 7개 팀 정보가 아닙니다.";
+            SettingCanvas.SetActive(true);
             shuffleButton.interactable = true;
             return;
         }
@@ -92,6 +101,8 @@ public class TeamRandomizer : MonoBehaviour
         if (teams == null)
         {
             Debug.LogWarning("유효한 2회차 팀 구성을 찾지 못했습니다.");
+            ErrorText.text = "유효한 2회차 팀 구성을 찾지 못했습니다.";
+            SettingCanvas.SetActive(true);
             shuffleButton.interactable = true;
             return;
         }
@@ -114,6 +125,8 @@ public class TeamRandomizer : MonoBehaviour
         if (!File.Exists(filePath))
         {
             Debug.LogError($"파일을 찾을 수 없습니다: {filePath}");
+            ErrorText.text = $"파일을 찾을 수 없습니다: {filePath}";
+            
             return null;
         }
 
@@ -137,7 +150,11 @@ public class TeamRandomizer : MonoBehaviour
                             players.AddRange(members);
                     }
                     else
+                    {
+
                         Debug.LogWarning($"라인 형식 오류 (멤버 수 !=4): {lines[i + 1]}");
+                        ErrorText.text = $"라인 형식 오류 (멤버 수 !=4): {lines[i + 1]}";
+                    }
                 }
             }
         }
@@ -168,6 +185,7 @@ public class TeamRandomizer : MonoBehaviour
         catch (Exception ex)
         {
             Debug.LogError($"Failed to save Result.csv: {ex}");
+            ErrorText.text = $"Failed to save Result.csv: {ex}";
         }
     }
     // --------------------------------------------------------
@@ -233,6 +251,9 @@ public class TeamRandomizer : MonoBehaviour
     // 팀 공개 연출
     private IEnumerator PlayTeamReveal()
     {
+        subscription.GoSub();
+        musicPlayer.Play();
+        randomMoveLight.GoLight();
         yield return new WaitForSeconds(30f);
         for (int ti = 0; ti < teams.Count; ti++)
         {

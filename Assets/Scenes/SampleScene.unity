@@ -1595,6 +1595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 113817491}
   - component: {fileID: 113817490}
+  - component: {fileID: 113817492}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -1714,6 +1715,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &113817492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113817489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21995f6308bd8b74089366f283290a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &126768566
 GameObject:
   m_ObjectHideFlags: 0
@@ -7679,43 +7692,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1562068205}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1131583707}
-        m_TargetAssemblyTypeName: Subscription, Assembly-CSharp
-        m_MethodName: GoSub
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 113817490}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1965177715}
-        m_TargetAssemblyTypeName: RandomMoveLight, Assembly-CSharp
-        m_MethodName: GoLight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1562068205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12133,9 +12110,11 @@ MonoBehaviour:
   - {fileID: 79829102}
   - {fileID: 1519474422}
   - {fileID: 2130068420}
+  musicPlayer: {fileID: 113817492}
   SettingCanvas: {fileID: 1693988880}
   shuffleButton: {fileID: 1562068204}
   CompletedText: {fileID: 1935692517}
+  subscription: {fileID: 1131583707}
   noDuplicateToggle: {fileID: 1665696735}
   fixedSeedToggle: {fileID: 1308521249}
   seedInputField: {fileID: 1125375139}

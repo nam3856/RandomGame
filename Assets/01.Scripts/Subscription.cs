@@ -35,7 +35,7 @@ public class Subscription : MonoBehaviour
         objectsToActive[i].SetActive(false);
         i++;
         objectsToActive[i].SetActive(true);
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(5.5f);
         objectsToActive[i].SetActive(false);
         i++;
         objectsToActive[i].SetActive(false);
