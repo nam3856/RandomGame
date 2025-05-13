@@ -7,6 +7,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Text;
 
 public class TeamRandomizer : MonoBehaviour
 {
@@ -171,7 +172,7 @@ public class TeamRandomizer : MonoBehaviour
 
         try
         {
-            using (var sw = new StreamWriter(filePath))
+            using (var sw = new StreamWriter(filePath, false, new UTF8Encoding(true))) // UTF-8 with BOM
             {
                 sw.WriteLine("Team,Member1,Member2,Member3,Member4");
                 for (int i = 0; i < teams.Count; i++)
@@ -188,6 +189,7 @@ public class TeamRandomizer : MonoBehaviour
             ErrorText.text = $"Failed to save Result.csv: {ex}";
         }
     }
+
     // --------------------------------------------------------
     // 팀 생성 로직
     private List<List<string>> GenerateRound2Teams(
