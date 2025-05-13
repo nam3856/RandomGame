@@ -27,4 +27,9 @@ public class CameraFocusController : MonoBehaviour
         Camera.main.transform.DOMove(originalPos, duration).SetEase(Ease.InOutSine);
         Camera.main.DOOrthoSize(originalSize, duration).SetEase(Ease.InOutSine);
     }
+
+    public void ShakeCamera(float strength, float duration)
+    {
+        Camera.main.transform.DOShakePosition(duration, strength);
+    }
 }

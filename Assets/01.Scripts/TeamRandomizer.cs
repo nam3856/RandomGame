@@ -265,29 +265,64 @@ public class TeamRandomizer : MonoBehaviour
 
             foreach (var name in group)
             {
-                // 포커스 & 라이트
-                CameraFocusController.Instance.FocusOnTeam(teamTexts[ti].transform, 2.8f, 0.4f);
-                randomMoveLight.FocusLightOnTeam(ti);
-                teamMemberEffects[ti].gameObject.SetActive(true);
-                teamMemberEffects[ti].Play();
-                yield return StartCoroutine(PlayNameRoulette(ti, name));
-                // 멤버 등장 이펙트
-                
-                effect.Play();
+                bool isLastTeam = ti == teams.Count - 1;
+                bool isLastMember = name == group[3];
 
-                // 즉시 이름 출력
-                teamTexts[ti].text += (teamTexts[ti].text == "" ? "" : "\n");
-                teamsToShow.Remove(name);
+                if (isLastTeam && isLastMember)
+                {
+                    // 마지막 팀의 마지막 멤버는 딜레이 후 '팡' 등장만
+                    CameraFocusController.Instance.ShakeCamera(1f, 3f);
 
-                // 텍스트 팝 애니메이션
-                teamTexts[ti].transform
-                    .DOScale(1.1f, 0.08f)
-                    .SetEase(Ease.OutBack)
-                    .OnComplete(() => teamTexts[ti].transform.DOScale(1f, 0.08f));
+                    teamTexts[ti].text += "최태온 강사님";
 
-                teamMemberEffects[ti].gameObject.transform.position = new Vector3(teamMemberEffects[ti].gameObject.transform.position.x, teamMemberEffects[ti].gameObject.transform.position.y-0.45f);
-                yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(3f);
+
+                    // 이펙트 & 사운드
+                    teamMemberEffects[ti].gameObject.SetActive(true);
+                    teamMemberEffects[ti].Play();
+                    effect.Play();
+
+                    // 텍스트 출력
+                    teamTexts[ti].text = ReplaceLastLine(teamTexts[ti].text, name);
+                    teamsToShow.Remove(name);
+
+                    // 팝 애니메이션
+                    teamTexts[ti].transform
+                        .DOScale(1.1f, 0.08f)
+                        .SetEase(Ease.OutBack)
+                        .OnComplete(() => teamTexts[ti].transform.DOScale(1f, 0.08f));
+
+                    teamMemberEffects[ti].transform.position =
+                        new Vector3(teamMemberEffects[ti].transform.position.x,
+                                    teamMemberEffects[ti].transform.position.y - 0.45f);
+                }
+                else
+                {
+                    // 기존 룰렛 방식
+                    CameraFocusController.Instance.FocusOnTeam(teamTexts[ti].transform, 2.8f, 0.4f);
+                    randomMoveLight.FocusLightOnTeam(ti);
+                    teamMemberEffects[ti].gameObject.SetActive(true);
+                    teamMemberEffects[ti].Play();
+                    yield return StartCoroutine(PlayNameRoulette(ti, name));
+
+                    effect.Play();
+
+                    teamTexts[ti].text += (teamTexts[ti].text == "" ? "" : "\n");
+                    teamsToShow.Remove(name);
+
+                    teamTexts[ti].transform
+                        .DOScale(1.1f, 0.08f)
+                        .SetEase(Ease.OutBack)
+                        .OnComplete(() => teamTexts[ti].transform.DOScale(1f, 0.08f));
+
+                    teamMemberEffects[ti].transform.position =
+                        new Vector3(teamMemberEffects[ti].transform.position.x,
+                                    teamMemberEffects[ti].transform.position.y - 0.45f);
+
+                    yield return new WaitForSeconds(0.3f);
+                }
             }
+
 
             // 팀 완성 팡!
             teamEffects[ti].gameObject.SetActive(true);
